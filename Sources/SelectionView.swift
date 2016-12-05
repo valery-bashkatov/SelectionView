@@ -11,41 +11,41 @@ import UIKit
 /**
  The `SelectionView` class provides selection mechanism and container for views that may be selected.
  */
-public class SelectionView: UIView {
+open class SelectionView: UIView {
     
     // MARK: - Properties
     
     /// The list of views that can be selected.
-    private(set) public var selectableSubviews = Set<UIView /* and Selectable */>()
+    fileprivate(set) open var selectableSubviews = Set<UIView /* and Selectable */>()
     
     /// The list of selected views.
-    public var selectedSubviews: [UIView] {
+    open var selectedSubviews: [UIView] {
         return Array(selectableSubviews).filter {($0 as! Selectable).isSelected}
     }
     
     /// A Boolean value that determines the possibility of multiple views selection.
-    public var allowsMultipleSelection = true {
+    open var allowsMultipleSelection = true {
         didSet {
             if allowsMultipleSelection {
-                panGestureRecognizer.enabled = true
-                multipleSelectionView.hidden = false
+                panGestureRecognizer.isEnabled = true
+                multipleSelectionView.isHidden = false
             } else {
-                panGestureRecognizer.enabled = false
-                multipleSelectionView.frame = CGRectZero
-                multipleSelectionView.hidden = true
+                panGestureRecognizer.isEnabled = false
+                multipleSelectionView.frame = CGRect.zero
+                multipleSelectionView.isHidden = true
                 deselectAll()
             }
         }
     }
     
     /// The view that shows the frame of multiple selection with pan gesture.
-    public let multipleSelectionView = UIView()
+    open let multipleSelectionView = UIView()
     
     /// Used to single view selection.
-    private let tapGestureRecognizer = UITapGestureRecognizer()
+    fileprivate let tapGestureRecognizer = UITapGestureRecognizer()
     
     /// Used to multiple views selection.
-    private let panGestureRecognizer = UIPanGestureRecognizer()
+    fileprivate let panGestureRecognizer = UIPanGestureRecognizer()
     
     // MARK: - Initialization
     
@@ -62,14 +62,14 @@ public class SelectionView: UIView {
     }
     
     /// Makes initial setup.
-    private func setup() {
-        opaque = false
-        userInteractionEnabled = true
+    fileprivate func setup() {
+        isOpaque = false
+        isUserInteractionEnabled = true
         allowsMultipleSelection = true
         
-        multipleSelectionView.opaque = false
-        multipleSelectionView.hidden = false
-        multipleSelectionView.userInteractionEnabled = false
+        multipleSelectionView.isOpaque = false
+        multipleSelectionView.isHidden = false
+        multipleSelectionView.isUserInteractionEnabled = false
         
         addSubview(multipleSelectionView)
         
@@ -89,10 +89,10 @@ public class SelectionView: UIView {
      
      :nodoc:
      */
-    @IBAction func selectOne(tapGestureRecognizer: UITapGestureRecognizer) {
-        let point = tapGestureRecognizer.locationInView(self)
+    @IBAction func selectOne(_ tapGestureRecognizer: UITapGestureRecognizer) {
+        let point = tapGestureRecognizer.location(in: self)
         
-        for selectableView in selectableSubviews where CGRectContainsPoint(selectableView.frame, point) {
+        for selectableView in selectableSubviews where selectableView.frame.contains(point) {
             if !allowsMultipleSelection {
                 deselectAll()
             }
@@ -108,22 +108,22 @@ public class SelectionView: UIView {
      
      :nodoc:
      */
-    @IBAction func selectMultiple(panGestureRecognizer: UIPanGestureRecognizer) {
-        let originalPoint = panGestureRecognizer.locationInView(self)
-        let translatedPoint = panGestureRecognizer.translationInView(self)
+    @IBAction func selectMultiple(_ panGestureRecognizer: UIPanGestureRecognizer) {
+        let originalPoint = panGestureRecognizer.location(in: self)
+        let translatedPoint = panGestureRecognizer.translation(in: self)
         
         switch panGestureRecognizer.state {
-        case .Began:
-            panGestureRecognizer.setTranslation(CGPointZero, inView: self)
+        case .began:
+            panGestureRecognizer.setTranslation(CGPoint.zero, in: self)
             
-        case .Changed:
+        case .changed:
             let selectionOrigin = CGPoint(x: originalPoint.x - translatedPoint.x, y: originalPoint.y - translatedPoint.y)
             let selectedRect = CGRect(origin: selectionOrigin, size: CGSize(width: translatedPoint.x, height: translatedPoint.y))
             
             multipleSelectionView.frame = selectedRect
             
             for selectableView in selectableSubviews {
-                if CGRectIntersectsRect(selectableView.frame, selectedRect) {
+                if selectableView.frame.intersects(selectedRect) {
                     toggleSelectedState(of: selectableView, to: true)
                 } else {
                     toggleSelectedState(of: selectableView, to: false)
@@ -131,12 +131,12 @@ public class SelectionView: UIView {
             }
             
         default:
-            multipleSelectionView.frame = CGRectZero
+            multipleSelectionView.frame = CGRect.zero
         }
     }
     
     /// Removes selection from all views.
-    public func deselectAll() {
+    open func deselectAll() {
         for selectedView in selectedSubviews {
             toggleSelectedState(of: selectedView, to: false)
         }
@@ -148,7 +148,7 @@ public class SelectionView: UIView {
      - parameter selectableView: The view to be toggled.
      - parameter selected: Optional. Toggle to which state: true / false / nil (reverse, default).
      */
-    public func toggleSelectedState(of selectableView: UIView, to selected: Bool? = nil) {
+    open func toggleSelectedState(of selectableView: UIView, to selected: Bool? = nil) {
         let selectableView = (selectableView as! Selectable)
         
         selectableView.isSelected = selected ?? !selectableView.isSelected
@@ -161,7 +161,7 @@ public class SelectionView: UIView {
      
      - parameter selectableView: The view to be added.
      */
-    public func addSelectableSubview<T where T: UIView, T: Selectable>(selectableView: T) {
+    open func addSelectableSubview<T>(_ selectableView: T) where T: UIView, T: Selectable {
         addSubview(selectableView)
     }
     
@@ -170,7 +170,7 @@ public class SelectionView: UIView {
      
      - parameter selectableView: The view to be removed.
      */
-    public func removeSelectableSubview<T where T: UIView, T: Selectable>(selectableView: T) {
+    open func removeSelectableSubview<T>(_ selectableView: T) where T: UIView, T: Selectable {
         selectableView.removeFromSuperview()
     }
     
@@ -182,14 +182,14 @@ public class SelectionView: UIView {
      
      :nodoc:
      */
-    public override func didAddSubview(subview: UIView /* and? Selectable */) {
+    open override func didAddSubview(_ subview: UIView /* and? Selectable */) {
         super.didAddSubview(subview)
         
         if subview is Selectable {
             selectableSubviews.insert(subview)
         }
         
-        bringSubviewToFront(multipleSelectionView)
+        bringSubview(toFront: multipleSelectionView)
     }
     
     /**
@@ -197,7 +197,7 @@ public class SelectionView: UIView {
      
      :nodoc:
      */
-    public override func willRemoveSubview(subview: UIView /* and? Selectable */) {
+    open override func willRemoveSubview(_ subview: UIView /* and? Selectable */) {
         super.willRemoveSubview(subview)
         
         if subview is Selectable {
