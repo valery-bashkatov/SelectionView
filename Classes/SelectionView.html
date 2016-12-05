@@ -66,7 +66,7 @@
             <h1>SelectionView</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SelectionView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">SelectionView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
 
                 </div>
               </div>
@@ -106,7 +106,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">selectableSubviews</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIView</span> <span class="cm">/* and Selectable */</span><span class="o">&gt;</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="n">open</span> <span class="k">var</span> <span class="nv">selectableSubviews</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIView</span> <span class="cm">/* and Selectable */</span><span class="o">&gt;</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -133,7 +133,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">selectedSubviews</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIView</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">selectedSubviews</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIView</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -160,7 +160,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowsMultipleSelection</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">allowsMultipleSelection</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
 
                         </div>
                       </div>
@@ -187,7 +187,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">multipleSelectionView</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">multipleSelectionView</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -225,7 +225,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deselectAll</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">deselectAll</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -252,7 +252,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toggleSelectedState</span><span class="p">(</span><span class="n">of</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">to</span> <span class="nv">selected</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">toggleSelectedState</span><span class="p">(</span><span class="n">of</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">to</span> <span class="nv">selected</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -323,7 +323,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">addSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="n">addSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -370,7 +370,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">removeSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="n">removeSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -405,8 +405,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2016 <a class="link" href="http://valery.bashkatov.org" target="_blank" rel="external">Valery Bashkatov</a>. All rights reserved. (Last updated: 2016-08-10)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2016 <a class="link" href="http://valery.bashkatov.org" target="_blank" rel="external">Valery Bashkatov</a>. All rights reserved. (Last updated: 2016-12-05)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
