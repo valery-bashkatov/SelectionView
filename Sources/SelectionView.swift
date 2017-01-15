@@ -23,23 +23,23 @@ open class SelectionView: UIView {
         return Array(selectableSubviews).filter {($0 as! Selectable).isSelected}
     }
     
-    /// A Boolean value that determines the possibility of multiple views selection.
-    open var allowsMultipleSelection = true {
+    /// A Boolean value that determines the possibility of multiple views selection. Default is `false`.
+    open var isMultiselectable = false {
         didSet {
-            if allowsMultipleSelection {
+            if isMultiselectable {
                 panGestureRecognizer.isEnabled = true
-                multipleSelectionView.isHidden = false
+                multiselectionView.isHidden = false
             } else {
                 panGestureRecognizer.isEnabled = false
-                multipleSelectionView.frame = CGRect.zero
-                multipleSelectionView.isHidden = true
+                multiselectionView.frame = CGRect.zero
+                multiselectionView.isHidden = true
                 deselectAll()
             }
         }
     }
     
     /// The view that shows the frame of multiple selection with pan gesture.
-    open let multipleSelectionView = UIView()
+    open let multiselectionView = UIView()
     
     /// Used to single view selection.
     fileprivate let tapGestureRecognizer = UITapGestureRecognizer()
@@ -65,13 +65,14 @@ open class SelectionView: UIView {
     fileprivate func setup() {
         isOpaque = false
         isUserInteractionEnabled = true
-        allowsMultipleSelection = true
         
-        multipleSelectionView.isOpaque = false
-        multipleSelectionView.isHidden = false
-        multipleSelectionView.isUserInteractionEnabled = false
+        isMultiselectable = false
         
-        addSubview(multipleSelectionView)
+        multiselectionView.isOpaque = false
+        multiselectionView.isHidden = true
+        multiselectionView.isUserInteractionEnabled = false
+        
+        addSubview(multiselectionView)
         
         tapGestureRecognizer.addTarget(self, action: #selector(selectOne(_:)))
         panGestureRecognizer.addTarget(self, action: #selector(selectMultiple(_:)))
@@ -93,7 +94,7 @@ open class SelectionView: UIView {
         let point = tapGestureRecognizer.location(in: self)
         
         for selectableView in selectableSubviews where selectableView.frame.contains(point) {
-            if !allowsMultipleSelection {
+            if !isMultiselectable {
                 deselectAll()
             }
             
@@ -120,7 +121,7 @@ open class SelectionView: UIView {
             let selectionOrigin = CGPoint(x: originalPoint.x - translatedPoint.x, y: originalPoint.y - translatedPoint.y)
             let selectedRect = CGRect(origin: selectionOrigin, size: CGSize(width: translatedPoint.x, height: translatedPoint.y))
             
-            multipleSelectionView.frame = selectedRect
+            multiselectionView.frame = selectedRect
             
             for selectableView in selectableSubviews {
                 if selectableView.frame.intersects(selectedRect) {
@@ -131,7 +132,7 @@ open class SelectionView: UIView {
             }
             
         default:
-            multipleSelectionView.frame = CGRect.zero
+            multiselectionView.frame = CGRect.zero
         }
     }
     
@@ -189,7 +190,7 @@ open class SelectionView: UIView {
             selectableSubviews.insert(subview)
         }
         
-        bringSubview(toFront: multipleSelectionView)
+        bringSubview(toFront: multiselectionView)
     }
     
     /**

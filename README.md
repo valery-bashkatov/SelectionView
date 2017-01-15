@@ -62,9 +62,11 @@ class ViewController: UIViewController {
         
         selectionView = SelectionView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
         
-        selectionView.multipleSelectionView.layer.borderWidth = 0.5
-        selectionView.multipleSelectionView.layer.borderColor = UIColor(white: 0.7, alpha: 1).cgColor
-        selectionView.multipleSelectionView.backgroundColor = UIColor(white: 0.9, alpha: 0.5)
+        selectionView.isMultiselectable = true
+        
+        selectionView.multiselectionView.layer.borderWidth = 0.5
+        selectionView.multiselectionView.layer.borderColor = UIColor(white: 0.7, alpha: 1).cgColor
+        selectionView.multiselectionView.backgroundColor = UIColor(white: 0.9, alpha: 0.5)
         
         for column in 0..<4 {
             for row in 0..<4 {
