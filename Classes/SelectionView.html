@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
 
@@ -21,6 +24,12 @@
           SelectionView Docs
         </a>
          (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
       </p>
     
         <p class="header-col header-col--secondary">
@@ -66,7 +75,7 @@
             <h1>SelectionView</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">SelectionView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SelectionView</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
 
                 </div>
               </div>
@@ -89,9 +98,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC13SelectionView13SelectionView18selectableSubviewsGVs3SetCSo6UIView_"></a>
+                    <a name="/s:13SelectionViewAAC18selectableSubviewss3SetVySo6UIViewCGvp"></a>
                     <a name="//apple_ref/swift/Property/selectableSubviews" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC13SelectionView13SelectionView18selectableSubviewsGVs3SetCSo6UIView_">selectableSubviews</a>
+                    <a class="token" href="#/s:13SelectionViewAAC18selectableSubviewss3SetVySo6UIViewCGvp">selectableSubviews</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -106,7 +115,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="n">open</span> <span class="k">var</span> <span class="nv">selectableSubviews</span> <span class="o">=</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIView</span> <span class="cm">/* and Selectable */</span><span class="o">&gt;</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">selectableSubviews</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIView</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -116,9 +125,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC13SelectionView13SelectionView16selectedSubviewsGSaCSo6UIView_"></a>
+                    <a name="/s:13SelectionViewAAC16selectedSubviewsSaySo6UIViewCGvp"></a>
                     <a name="//apple_ref/swift/Property/selectedSubviews" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC13SelectionView13SelectionView16selectedSubviewsGSaCSo6UIView_">selectedSubviews</a>
+                    <a class="token" href="#/s:13SelectionViewAAC16selectedSubviewsSaySo6UIViewCGvp">selectedSubviews</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -133,7 +142,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">selectedSubviews</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIView</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">selectedSubviews</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIView</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -143,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC13SelectionView13SelectionView17isMultiselectableSb"></a>
+                    <a name="/s:13SelectionViewAAC17isMultiselectableSbvp"></a>
                     <a name="//apple_ref/swift/Property/isMultiselectable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC13SelectionView13SelectionView17isMultiselectableSb">isMultiselectable</a>
+                    <a class="token" href="#/s:13SelectionViewAAC17isMultiselectableSbvp">isMultiselectable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -160,7 +169,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">var</span> <span class="nv">isMultiselectable</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isMultiselectable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -170,9 +179,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC13SelectionView13SelectionView18multiselectionViewCSo6UIView"></a>
+                    <a name="/s:13SelectionViewAAC014multiselectionB0So6UIViewCvp"></a>
                     <a name="//apple_ref/swift/Property/multiselectionView" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC13SelectionView13SelectionView18multiselectionViewCSo6UIView">multiselectionView</a>
+                    <a class="token" href="#/s:13SelectionViewAAC014multiselectionB0So6UIViewCvp">multiselectionView</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -187,7 +196,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">multiselectionView</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">let</span> <span class="nv">multiselectionView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
 
                         </div>
                       </div>
@@ -208,9 +217,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC13SelectionView13SelectionView11deselectAllFT_T_"></a>
+                    <a name="/s:13SelectionViewAAC11deselectAllyyF"></a>
                     <a name="//apple_ref/swift/Method/deselectAll()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC13SelectionView13SelectionView11deselectAllFT_T_">deselectAll()</a>
+                    <a class="token" href="#/s:13SelectionViewAAC11deselectAllyyF">deselectAll()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -225,7 +234,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">deselectAll</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">deselectAll</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -235,9 +244,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC13SelectionView13SelectionView19toggleSelectedStateFT2ofCSo6UIView2toGSqSb__T_"></a>
+                    <a name="/s:13SelectionViewAAC19toggleSelectedStateySo6UIViewC2of_SbSg2totF"></a>
                     <a name="//apple_ref/swift/Method/toggleSelectedState(of:to:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC13SelectionView13SelectionView19toggleSelectedStateFT2ofCSo6UIView2toGSqSb__T_">toggleSelectedState(of:to:)</a>
+                    <a class="token" href="#/s:13SelectionViewAAC19toggleSelectedStateySo6UIViewC2of_SbSg2totF">toggleSelectedState(of:to:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -252,7 +261,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">toggleSelectedState</span><span class="p">(</span><span class="n">of</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">to</span> <span class="nv">selected</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">toggleSelectedState</span><span class="p">(</span><span class="n">of</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="n">to</span> <span class="nv">selected</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -269,7 +278,6 @@
                               <td>
                                 <div>
                                   <p>The view to be toggled.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -282,7 +290,6 @@
                               <td>
                                 <div>
                                   <p>Optional. Toggle to which state: true / false / nil (reverse, default).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -306,9 +313,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC13SelectionView13SelectionView20addSelectableSubviewuRxCSo6UIViewxS_10SelectablerFxT_"></a>
+                    <a name="/s:13SelectionViewAAC20addSelectableSubviewyxSo6UIViewCRbzAA0D0RzlF"></a>
                     <a name="//apple_ref/swift/Method/addSelectableSubview(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC13SelectionView13SelectionView20addSelectableSubviewuRxCSo6UIViewxS_10SelectablerFxT_">addSelectableSubview(_:)</a>
+                    <a class="token" href="#/s:13SelectionViewAAC20addSelectableSubviewyxSo6UIViewCRbzAA0D0RzlF">addSelectableSubview(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -323,7 +330,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="n">addSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">addSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -340,7 +347,6 @@
                               <td>
                                 <div>
                                   <p>The view to be added.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -353,9 +359,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC13SelectionView13SelectionView23removeSelectableSubviewuRxCSo6UIViewxS_10SelectablerFxT_"></a>
+                    <a name="/s:13SelectionViewAAC23removeSelectableSubviewyxSo6UIViewCRbzAA0D0RzlF"></a>
                     <a name="//apple_ref/swift/Method/removeSelectableSubview(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC13SelectionView13SelectionView23removeSelectableSubviewuRxCSo6UIViewxS_10SelectablerFxT_">removeSelectableSubview(_:)</a>
+                    <a class="token" href="#/s:13SelectionViewAAC23removeSelectableSubviewyxSo6UIViewCRbzAA0D0RzlF">removeSelectableSubview(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -370,7 +376,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="n">removeSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">removeSelectableSubview</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectableView</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Selectable.html">Selectable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -387,7 +393,6 @@
                               <td>
                                 <div>
                                   <p>The view to be removed.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -405,8 +410,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="http://valery.bashkatov.org" target="_blank" rel="external">Valery Bashkatov</a>. All rights reserved. (Last updated: 2017-01-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="http://valery.bashkatov.org" target="_blank" rel="external">Valery Bashkatov</a>. All rights reserved. (Last updated: 2018-08-18)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
